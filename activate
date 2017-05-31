@@ -2,6 +2,7 @@
 
 SERVER=$1
 ENVNAME=$2
+# Directory that contains the venvs
 # HOME=/cvgl/u/chrischoy
 
 ENV_ROOT="${HOME}/.pyv/${SERVER}/${ENVNAME}/bin"

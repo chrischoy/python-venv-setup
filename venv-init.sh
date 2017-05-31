@@ -4,6 +4,7 @@ set -e
 
 SERVER=$1
 ENVNAME=$2
+# Directory that contains the venvs
 # HOME=/cvgl/u/chrischoy
 
 # Check the number of argument

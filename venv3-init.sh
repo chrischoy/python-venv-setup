@@ -4,6 +4,7 @@ set -e
 
 SERVER=$1
 ENVNAME=$2
+# Directory that contains the venvs
 # HOME=/cvgl/u/chrischoy/
 
 # Check the number of argument
@@ -13,7 +14,9 @@ if [ "$#" -eq 2 ]; then
   mkdir -p ${PYTHON_ROOT}
 
   # Python3
-  wget https://www.python.org/ftp/python/3.6.1/Python-3.6.1.tgz -O ${PYTHON_ROOT}
+  wget -q -O- https://www.python.org/ftp/python/3.6.1/Python-3.6.1.tgz | tar -xz -C "${HOME}/.pyv/${SERVER}"
+  mv "${HOME}/.pyv/${SERVER}/Python-3.6.1" ${PYTHON_ROOT}
+
   cd ${PYTHON_ROOT}
   ./configure --prefix=${PYTHON_ROOT}
   make -j8
