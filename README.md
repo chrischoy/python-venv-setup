@@ -20,6 +20,8 @@ ssh $SERVER_NAME
 # Replace all $HOME with the dir of your choice if you want to use another directory for all venv folders
 cd $HOME
 git clone https://github.com/chrischoy/python-venv-setup
+cd python-venv-setup
+# Make symlinks for activate, and deactivate scripts
 ln -s activate $HOME/activate
 ln -s deactivate $HOME/deactivate
 # Make a virtual environment named $ENV_NAME that is specific for the current $SERVER_NAME
@@ -51,6 +53,9 @@ When you are done using it, deactivate it
 ```
 source deactivate
 ```
+
+Note that the activation and deactivation simply modify the environment variables.
+
 
 ## Tips
 
