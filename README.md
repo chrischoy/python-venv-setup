@@ -11,8 +11,9 @@ server environments for the first time. This includes installation, activation a
 deactivation of python virtual environments.
 
 
-## Installation
+## Setting up an virtual environment
 
+The following script shows you how to run the script `venv-init.sh` to make an environment named `$ENV_NAME` on `$SERVER_NAME`.
 
 ```
 # Your server
@@ -25,10 +26,10 @@ cd python-venv-setup
 ln -s activate $HOME/activate
 ln -s deactivate $HOME/deactivate
 # Make a virtual environment named $ENV_NAME that is specific for the current $SERVER_NAME
-./python-env-setup/venv-init.sh $SERVER_NAME $ENV_NAME
+./venv-init.sh $SERVER_NAME $ENV_NAME
 ```
 
-For python3
+For python3, replace the last line with
 
 ```
 ./venv3-init.sh $SERVER_NAME $ENV_NAME
@@ -38,6 +39,7 @@ The above script will compile python 3.6.1 from the source.
 
 If you want to use other directory rather than `$HOME`, replace all $HOME with the directory when making symlinks in while installation, also uncomment the
 `$HOME` variable in `activate`, `venv-init.sh`, and `venv3-init.sh` and replace it with the directory.
+Note that if you source the activation script with the change, it will update your environment variable `$HOME`. Rename it to something else when you do this.
 
 
 ## Usage
