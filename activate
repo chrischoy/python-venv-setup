@@ -1,0 +1,20 @@
+#!/bin/sh
+
+SERVER=$1
+ENVNAME=$2
+
+ENV_ROOT="/cvgl/u/chrischoy/.pyv/${SERVER}/${ENVNAME}/bin"
+
+# Check the number of arguments
+if [ "$#" -eq 2 ] && [ -d "${ENV_ROOT}" ]; then
+    echo "Activating ${1}:${2}"
+    export OLD_LD_LIBRARY_PATH=$LD_LIBRARY_PATH
+    export OLD_PATH=$PATH
+    export OLD_PS1="$PS1"
+
+    export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+    export PATH=/cvgl/u/chrischoy/.pyv/${SERVER}/${ENVNAME}/bin:/usr/local/cuda/bin:$PATH
+    export PS1="(${SERVER}:${ENVNAME})$PS1"
+else
+    echo "Please put the server name and environment name as arguments, you put ${1} and ${2}" >&2
+fi
