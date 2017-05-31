@@ -6,8 +6,8 @@ If you are working on old servers with no `job scheduler` and want to
 standardize python environment settings for all servers without sudo privilege,
 you found the right repository.
 
-This repository contains scripts that you might want to use when you set up
-servers for the first time. This includes installation, activation and
+This repository contains scripts that you might find useful when you set up
+server environments for the first time. This includes installation, activation and
 deactivation of python virtual environments.
 
 
@@ -15,13 +15,15 @@ deactivation of python virtual environments.
 
 
 ```
-cd ~
+# Your server
+ssh $SERVER_NAME
+# Replace all $HOME with the dir of your choice if you want to use another directory for all venv folders
+cd $HOME
 git clone https://github.com/chrischoy/python-venv-setup
-cd python-venv-setup
 ln -s activate $HOME/activate
 ln -s deactivate $HOME/deactivate
 # Make a virtual environment named $ENV_NAME that is specific for the current $SERVER_NAME
-./venv-init.sh $SERVER_NAME $ENV_NAME
+./python-env-setup/venv-init.sh $SERVER_NAME $ENV_NAME
 ```
 
 For python3
