@@ -4,16 +4,17 @@ set -e
 
 SERVER=$1
 ENVNAME=$2
-
+# HOME=/cvgl/u/chrischoy/
 
 # Check the number of argument
 if [ "$#" -eq 2 ]; then
-  ENV_ROOT=/cvgl/u/chrischoy/.pyv/${SERVER}/${ENVNAME}
-  PYTHON_ROOT=/cvgl/u/chrischoy/.pyv/${SERVER}/python3/
+  ENV_ROOT=${HOME}/.pyv/${SERVER}/${ENVNAME}
+  PYTHON_ROOT=${HOME}/.pyv/${SERVER}/python3/
   mkdir -p ${PYTHON_ROOT}
 
   # Python3
-  cd /cvgl/u/chrischoy/packages/Python-3.6.1/
+  wget https://www.python.org/ftp/python/3.6.1/Python-3.6.1.tgz -O ${PYTHON_ROOT}
+  cd ${PYTHON_ROOT}
   ./configure --prefix=${PYTHON_ROOT}
   make -j8
   make install
@@ -23,6 +24,7 @@ if [ "$#" -eq 2 ]; then
   export PATH=${PYTHON_ROOT}/bin:/usr/local/cuda/bin:$PATH
   python3.6 -m venv ${ENV_ROOT}
 
+  cd ${HOME}
   . ./activate ${SERVER} ${ENVNAME}
 
   # Install custom libraries
