@@ -11,6 +11,7 @@ ENVNAME=$2
 if [ "$#" -eq 2 ]; then
   ENV_ROOT=${HOME}/.pyv/${SERVER}/${ENVNAME}
   PYTHON_ROOT=${HOME}/.pyv/${SERVER}/python3/
+  mkdir -p ${ENV_ROOT}
 
   # Python3
   wget -q -O- https://www.python.org/ftp/python/3.6.1/Python-3.6.1.tgz | tar -xz -C "${HOME}/.pyv/${SERVER}"
