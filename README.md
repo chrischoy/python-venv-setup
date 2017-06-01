@@ -23,8 +23,8 @@ cd $HOME
 git clone https://github.com/chrischoy/python-venv-setup
 cd python-venv-setup
 # Make symlinks for activate, and deactivate scripts
-ln -s activate $HOME/activate
-ln -s deactivate $HOME/deactivate
+ln -s $HOME/python-venv-setup/activate $HOME/activate
+ln -s $HOME/python-venv-setup/deactivate $HOME/deactivate
 # Make a virtual environment named $ENV_NAME that is specific for the current $SERVER_NAME
 ./venv-init.sh $SERVER_NAME $ENV_NAME
 ```
