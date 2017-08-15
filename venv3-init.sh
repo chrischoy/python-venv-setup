@@ -5,17 +5,18 @@ set -e
 SERVER=$1
 ENVNAME=$2
 # Directory that contains the venvs
-# HOME=/cvgl/u/chrischoy/
+# PYV_ROOT=/cvgl/u/chrischoy/
+PYV_ROOT=${HOME}
 
 # Check the number of argument
 if [ "$#" -eq 2 ]; then
-  ENV_ROOT=${HOME}/.pyv/${SERVER}/${ENVNAME}
-  PYTHON_ROOT=${HOME}/.pyv/${SERVER}/python3/
+  ENV_ROOT=${PYV_ROOT}/.pyv/${SERVER}/${ENVNAME}
+  PYTHON_ROOT=${PYV_ROOT}/.pyv/${SERVER}/python3/
   mkdir -p ${ENV_ROOT}
 
   # Python3
-  wget -q -O- https://www.python.org/ftp/python/3.6.1/Python-3.6.1.tgz | tar -xz -C "${HOME}/.pyv/${SERVER}"
-  mv "${HOME}/.pyv/${SERVER}/Python-3.6.1" ${PYTHON_ROOT}
+  wget -q -O- https://www.python.org/ftp/python/3.6.1/Python-3.6.1.tgz | tar -xz -C "${PYV_ROOT}/.pyv/${SERVER}"
+  mv "${PYV_ROOT}/.pyv/${SERVER}/Python-3.6.1" ${PYTHON_ROOT}
 
   cd ${PYTHON_ROOT}
   ./configure --prefix=${PYTHON_ROOT}
@@ -27,7 +28,7 @@ if [ "$#" -eq 2 ]; then
   export PATH=${PYTHON_ROOT}/bin:/usr/local/cuda/bin:$PATH
   python3.6 -m venv ${ENV_ROOT}
 
-  cd ${HOME}
+  cd ${PYV_ROOT}
   . ./activate ${SERVER} ${ENVNAME}
 
   # Install custom libraries

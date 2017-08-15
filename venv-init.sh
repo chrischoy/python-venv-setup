@@ -5,11 +5,12 @@ set -e
 SERVER=$1
 ENVNAME=$2
 # Directory that contains the venvs
-# HOME=/cvgl/u/chrischoy
+# PYV_ROOT=/cvgl/u/chrischoy
+PYV_ROOT=${HOME}
 
 # Check the number of argument
 if [ "$#" -eq 2 ]; then
-  ENV_ROOT=${HOME}/.pyv/${SERVER}/${ENVNAME}
+  ENV_ROOT=${PYV_ROOT}/.pyv/${SERVER}/${ENVNAME}
   mkdir -p ${ENV_ROOT}
   virtualenv ${ENV_ROOT}
 

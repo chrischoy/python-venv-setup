@@ -3,9 +3,10 @@
 SERVER=$1
 ENVNAME=$2
 # Directory that contains the venvs
-# HOME=/cvgl/u/chrischoy
+# PYV_HOME=/cvgl/u/chrischoy
+PYV_ROOT=${HOME}
 
-ENV_ROOT="${HOME}/.pyv/${SERVER}/${ENVNAME}/bin"
+ENV_ROOT="${PYV_ROOT}/.pyv/${SERVER}/${ENVNAME}/bin"
 
 # Check the number of arguments
 if [ "$#" -eq 2 ] && [ -d "${ENV_ROOT}" ]; then
@@ -15,7 +16,7 @@ if [ "$#" -eq 2 ] && [ -d "${ENV_ROOT}" ]; then
     export OLD_PS1="$PS1"
 
     export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
-    export PATH=${HOME}/.pyv/${SERVER}/${ENVNAME}/bin:/usr/local/cuda/bin:$PATH
+    export PATH=${PYV_ROOT}/.pyv/${SERVER}/${ENVNAME}/bin:/usr/local/cuda/bin:$PATH
     export PS1="(${SERVER}:${ENVNAME})$PS1"
 else
     echo "Please put the server name and environment name as arguments, you put ${1} and ${2}" >&2
