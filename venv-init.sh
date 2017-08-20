@@ -17,7 +17,7 @@ if [ "$#" -eq 2 ]; then
   . ./activate ${SERVER} ${ENVNAME}
 
   # Upgrade pip
-  wget https://bootstrap.pypa.io/get-pip.py -O ${ENV_ROOT}
+  wget https://bootstrap.pypa.io/get-pip.py -P ${ENV_ROOT}
   python ${ENV_ROOT}/get-pip.py
 
   # Install custom libraries
