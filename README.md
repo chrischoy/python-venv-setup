@@ -11,7 +11,7 @@ server environments for the first time. This includes installation, activation a
 deactivation of python virtual environments.
 
 
-## Setting up an virtual environment
+## Setting up a virtual environment
 
 The following script shows you how to run the script `venv-init.sh` to make an environment named `$ENV_NAME` on `$SERVER_NAME`.
 
